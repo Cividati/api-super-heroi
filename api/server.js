@@ -20,8 +20,9 @@ app.get('/read', (req, res) => {
 });
 
 app.get('/update', (req, res) => {
+
     var hero = new Hero(req.query)
-    hero.read()
+    hero.update()
     res.send(hero)
 });
 

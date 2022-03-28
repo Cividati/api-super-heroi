@@ -1,7 +1,7 @@
 // Initialize Cloud Firestore through Firebase
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc, deleteDoc, updateDoc } from 'firebase/firestore';
 
 export class database {
     constructor(){
@@ -18,9 +18,10 @@ export class database {
     async create(collection, document, obj) {    
       
       try {
-        const docRef = await setDoc(doc(this.db, collection, document), obj);
+        const docRef = doc(this.db, collection, document)
+        const docsSnap = await setDoc(docRef, obj);
 
-        console.log("Document written with ID: ", document);
+        console.log("Document created with ID: ", document);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -31,22 +32,30 @@ export class database {
         const docSnap = await getDoc(docRef);
     
         if (docSnap.exists()) {
-          console.log('Document data:', docSnap.data());
-          return docSnap.data()
+          //console.log('Document data:', docSnap.data());
+          return docSnap.data();
         } else {
           // doc.data() will be undefined in this case
           console.log('No such document!');
+          return false;
         }
     }
 
     async update(collection, document, obj) {
-      this.create(collection, document, obj)
+      try {
+        const docRef = doc(this.db, collection, document)
+        const docsSnap = await updateDoc(docRef, obj);
+
+        console.log("Document created with ID: ", document);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
     }
 
     async delete(collection, document) {
         try {
             const docRef = await deleteDoc(doc(this.db, collection, document));
-            console.log("Document ", document, " deleted from ", collection, " collection");
+            console.log("Document deleted with ID: ", document);
         } catch(e) {
             console.error("Error deleting document: ", e);
         }

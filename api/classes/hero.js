@@ -25,16 +25,15 @@ export class Hero {
         let obj = {}
         obj.name = this.name
         if (this.strength != 'undefined')
-            obj.strength = this.strength
+            obj.strength = parseFloat(this.strength)
         if (this.intelligence != 'undefined')
-            obj.intelligence = this.intelligence
+            obj.intelligence = parseFloat(this.intelligence)
         if (this.agillity != 'undefined')
-            obj.agillity = this.agillity
+            obj.agillity = parseFloat(this.agillity)
         if (this.origin != 'undefined')
             obj.origin = this.origin
 
-        console.log('myobj:', obj)
-        //await new database().update(this.class_name, this.name, obj)
+        await new database().update(this.class_name, this.name, obj)
     }
 
     async delete(){
