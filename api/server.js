@@ -13,4 +13,10 @@ app.get('/create', (req, res) => {
     res.send(hero)
 });
 
+app.get('/delete', (req, res) => {
+    var hero = new hero(req.query)
+    hero.delete()
+    res.send(hero)
+});
+
 app.listen(80)  
