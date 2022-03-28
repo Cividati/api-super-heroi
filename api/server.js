@@ -19,6 +19,12 @@ app.get('/read', (req, res) => {
     res.send(hero)
 });
 
+app.get('/update', (req, res) => {
+    var hero = new hero(req.query)
+    hero.read()
+    res.send(hero)
+});
+
 app.get('/delete', (req, res) => {
     var hero = new hero(req.query)
     hero.delete()
