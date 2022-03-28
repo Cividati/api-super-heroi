@@ -42,5 +42,14 @@ export class database {
     async update(collection, document, obj) {
       this.create(collection, document, obj)
     }
+
+    async delete(collection, document) {
+        try {
+            const docRef = await deleteDoc(doc(this.db, collection, document));
+            console.log("Document ", document, " deleted from ", collection, " collection");
+        } catch(e) {
+            console.error("Error deleting document: ", e);
+        }
+    }
 }
 
