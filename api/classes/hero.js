@@ -1,12 +1,12 @@
 import { database } from './database.js'
 
-export class hero {
-    constructor(name, strength=0, intelligence=0, agility=0, origin=''){
-        this.name = name
-        this.strength = strength
-        this.intelligence = intelligence
-        this.agility = agility
-        this.origin = origin
+export class Hero {
+    constructor(query){
+        query.name == undefined ? this.name = 'undefined' : this.name = query.name 
+        query.strength == undefined ? this.strength = 'undefined' : this.strength = query.strength 
+        query.intelligence == undefined ? this.intelligence = 'undefined' : this.intelligence = query.intelligence 
+        query.agility == undefined ? this.agility = 'undefined' : this.agility = query.agility 
+        query.origin == undefined ? this.origin = 'undefined' : this.origin = query.origin 
         this.class_name = 'hero'
     }
 
