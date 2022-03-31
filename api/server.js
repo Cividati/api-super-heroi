@@ -1,10 +1,24 @@
 import { Hero } from './classes/Hero.js'
 import express from 'express';
-
+import fs from 'fs'
+import Showdown from 'showdown';
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send('hello');
+    const Fs = fs
+    var data;
+    try {
+      data = Fs.readFileSync('../README.md', 'utf8')
+    } catch (err) {
+      console.error(err)
+    }
+  
+    // convert markdown to html
+    var showdown  = Showdown,
+      converter = new showdown.Converter(),
+      html      = converter.makeHtml(data);
+  
+    res.send(html)
 });
 
 app.get('/create', (req, res) => {
@@ -36,7 +50,5 @@ app.get('/delete', (req, res) => {
     }
     res.send(ret)
 });
-
-
 
 app.listen(80)  
