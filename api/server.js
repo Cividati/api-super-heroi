@@ -14,6 +14,7 @@ app.get('/create', (req, res) => {
 });
 
 app.get('/read', (req, res) => {
+    // NOT WORKING
     var hero = new Hero(req.query)
     hero.read()
     res.send(hero)
@@ -29,7 +30,11 @@ app.get('/update', (req, res) => {
 app.get('/delete', (req, res) => {
     var hero = new Hero(req.query)
     hero.delete()
-    res.send(hero)
+    let ret = {
+        name: hero.name,
+        status: 'deleted'
+    }
+    res.send(ret)
 });
 
 
