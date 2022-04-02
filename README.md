@@ -1,5 +1,5 @@
 # Api Super Herio
-Api feita em nodejs capaz de realizar um CRUD de super herois.
+Api feita em nodejs capaz de realizar um CRUD de super herois no banco de dados firebase
 
 ## Como começar
 ```bash
