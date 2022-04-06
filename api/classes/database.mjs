@@ -21,9 +21,12 @@ export class database {
         const docRef = doc(this.db, collection, document)
         const docsSnap = await setDoc(docRef, obj);
 
-        console.log("Document created with ID: ", document);
+        // console.log("Document created with ID: ", document);
+        return true
+
       } catch (e) {
-        console.error("Error adding document: ", e);
+        // console.error("Error adding document: ", e);
+        return false
       }
     }
 
@@ -35,8 +38,7 @@ export class database {
           //console.log('Document data:', docSnap.data());
           return docSnap.data();
         } else {
-          // doc.data() will be undefined in this case
-          console.log('No such document!');
+          // console.log('No such document!');
           return false;
         }
     }
@@ -46,9 +48,12 @@ export class database {
         const docRef = doc(this.db, collection, document)
         const docsSnap = await updateDoc(docRef, obj);
 
-        console.log("Document created with ID: ", document);
+        // console.log("Document updated with ID: ", document);
+        return true 
+
       } catch (e) {
-        console.error("Error adding document: ", e);
+        // console.error("Error updating document: ", e);
+        return false 
       }
     }
 
@@ -56,8 +61,11 @@ export class database {
         try {
             const docRef = await deleteDoc(doc(this.db, collection, document));
             console.log("Document deleted with ID: ", document);
+            return true
+
         } catch(e) {
             console.error("Error deleting document: ", e);
+            return false
         }
     }
 }

@@ -1,22 +1,42 @@
 {
   "name": "api-super-heroi",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Api feita em nodejs capaz de realizar um CRUD de super herois no banco de dados firebase",
+  "main": "api/server.js",
+
+  "jest": {
+    "verbose": true
+  },
   "scripts": {
-    "build": "node ./api/server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node api/server.js",
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
-    "url": "github.com/cividati/api-super-heroi"
+    "url": "git+https://github.com/Cividati/api-super-heroi.git"
   },
-  "author": "Rubens Cividati",
+  "author": "",
   "license": "ISC",
   "type": "module",
+  "bugs": {
+    "url": "https://github.com/Cividati/api-super-heroi/issues"
+  },
+  "homepage": "https://github.com/Cividati/api-super-heroi#readme",
   "dependencies": {
+    "babel-core": "^6.26.3",
     "express": "^4.17.3",
     "firebase": "^9.6.10",
+    "regenerator-runtime": "^0.13.9",
     "showdown": "^2.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/jest": "^25.1.2",
+    "babel-jest": "^25.5.1",
+    "jest": "^25.1.0",
+    "mocha": "^9.2.2",
+    "ts-node": "^10.7.0"
   }
 }
