@@ -1,14 +1,15 @@
-import { Hero } from './classes/Hero.js'
+import { Hero } from './classes/hero.mjs'
 import express from 'express';
 import fs from 'fs'
 import Showdown from 'showdown';
 const app = express()
+const PORT = 80
 
 app.get('/', (req, res) => {
     const Fs = fs
     var data;
     try {
-      data = Fs.readFileSync('../README.md', 'utf8')
+      data = Fs.readFileSync('../../README.md', 'utf8')
     } catch (err) {
       console.error(err)
     }
@@ -51,4 +52,4 @@ app.get('/delete', (req, res) => {
     res.send(ret)
 });
 
-app.listen(80)  
+app.listen(PORT)  

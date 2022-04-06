@@ -1,19 +1,25 @@
-import { database } from './database.js'
+import { database } from './database.mjs'
 
 export class Hero {
     constructor(query){
+        try {
         query.name == undefined ? this.name = 'undefined' : this.name = query.name 
         query.strength == undefined ? this.strength = 'undefined' : this.strength = query.strength 
         query.intelligence == undefined ? this.intelligence = 'undefined' : this.intelligence = query.intelligence 
         query.agillity == undefined ? this.agillity = 'undefined' : this.agillity = query.agillity 
         query.origin == undefined ? this.origin = 'undefined' : this.origin = query.origin 
         this.class_name = 'hero'
+
+        }
+        catch (e){
+            return false
+        }
     }
 
     async create(){   
     
         let obj = JSON.parse(JSON.stringify(this))
-        new database().create(this.class_name, this.name, obj)
+        return await new database().create(this.class_name, this.name, obj)
     }
     
     async read(){
@@ -33,10 +39,10 @@ export class Hero {
         if (this.origin != 'undefined')
             obj.origin = this.origin
 
-        await new database().update(this.class_name, this.name, obj)
+        return await new database().update(this.class_name, this.name, obj)
     }
 
     async delete(){
-        await new database().delete(this.class_name, this.name)
+        return await new database().delete(this.class_name, this.name)
     }
 }    
