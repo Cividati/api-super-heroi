@@ -38,9 +38,9 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.1.0
         
-      - name: node --version
+      - run: node --version
 
-      - name: npm --version
+      - run: npm --version
 
       - run: ls -la
 
