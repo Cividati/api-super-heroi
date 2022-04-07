@@ -44,6 +44,9 @@ jobs:
 
       - run: ls -la
 
+      - name: Install Packages
+        run: npm install 
+        
       - name: Run Tests
         run: npm run test 
 
