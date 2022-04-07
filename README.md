@@ -1,3 +1,5 @@
+[![CI](https://github.com/Cividati/api-super-heroi/actions/workflows/ci.yml/badge.svg)](https://github.com/Cividati/api-super-heroi/actions/workflows/ci.yml)
+
 # Api Super Herio
 Api feita em nodejs capaz de realizar um CRUD de super herois no banco de dados firebase
 
